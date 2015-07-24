@@ -14,7 +14,7 @@
       "ext-gd": "*",
       "illuminate/config": "~5.0",
       "illuminate/filesystem": "~5.0",
-      "Illuminate/session": "~5.2",
+      "Illuminate/session": "~5.0",
       "intervention/image": "~2.2"
 
     },
