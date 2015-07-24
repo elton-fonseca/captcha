@@ -1,0 +1,29 @@
+{
+    "name": "eltonfonseca/captcha",
+    "description": "Laravel Captcha numeric plus",
+    "keywords": ["laravel", "captcha", "numeric plus"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Elton Fonseca",
+            "email": "elton869@gmail.com"
+        }
+    ],
+    "require": {
+      "php": ">=5.4",
+      "ext-gd": "*",
+      "illuminate/config": "~5.0",
+      "illuminate/filesystem": "~5.0",
+      "intervention/image": "~2.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "EltonFonseca\\Captcha\\": "src/"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+
+    "minimum-stability": "dev"
+}
