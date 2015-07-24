@@ -13,13 +13,11 @@ class CaptchaServiceProvider extends ServiceProvider
      */
     public function register()
     {
+
         $this->app->bind('captcha', function($app)
         {
 
-            echo "provider";
-
-            dd('asdas');
-            return new Catpcha(
+            return new EltonFonseca\Captcha\Captcha (
                 $app['Illuminate\Filesystem\Filesystem'],
                 $app['Illuminate\Config\Repository'],
                 $app['Intervention\Image\ImageManager'],

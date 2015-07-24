@@ -26,7 +26,7 @@ class Captcha {
     }
 
     public function generate(){
-        echo "<br>dentro do generete<br>";
+        echo "<br>dentro do generete<>";
     }
 
 
