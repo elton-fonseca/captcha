@@ -17,9 +17,9 @@ class CaptchaServiceProvider extends ServiceProvider
         $this->app->bind('captcha', function($app)
         {
 
-            return new EltonFonseca\Captcha\Captcha (
+            return new Captcha (
                 $app['Illuminate\Filesystem\Filesystem'],
-                $app['Illuminate\Config\Repository'],
+                $app['Illuminate\Hashing\BcryptHasher'],
                 $app['Intervention\Image\ImageManager'],
                 $app['Illuminate\Session\Store']
             );
@@ -34,6 +34,25 @@ class CaptchaServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        //Route for controller
+        $this->app['router']->get('captcha/{width?}/{heigth?}', 
+            ['as' => 'captcha', 'uses' => '\EltonFonseca\Captcha\CaptchaController@getCaptcha']);
+
+        // Validator extensions
+        $this->app['validator']->extend('captcha', function($attribute, $value, $parameters)
+        {
+            return captcha_check($value);
+        });
+
+        // validator message    
+        $this->app['validator']->replacer('attribute', function($message, $attribute, $rule, $parameters)
+        {
+            if($rule == 'validation.captcha'){
+                return 'Por favor, some os dois números';
+            }
+
+            return $message;
+        });
 
     }
 }
